@@ -14,26 +14,39 @@
         body \{ font-family: Arial; text-align: center; background: #f7f7f7; padding: 20px; \}\
         canvas \{ border: 1px solid #ccc; margin-top: 20px; max-width: 100%; \}\
         input, select, button \{ margin: 10px; padding: 10px; font-size: 16px; \}\
+        #previewImage \{ margin-top: 20px; max-width: 300px; display: block; margin-left: auto; margin-right: auto; \}\
     </style>\
 </head>\
 <body>\
+\
     <h1>Job Hunt Meme Generator</h1>\
-    <select id="imageSelector">\
-        <option value="images/template1.jpg">Template 1</option>\
-        <option value="images/template2.jpg">Template 2</option>\
-        <option value="images/template3.jpg">Template 3</option>\
-        <option value="images/template4.jpg">Template 4</option>\
-        <option value="images/template5.jpg">Template 5</option>\
-        <option value="images/template6.jpg">Template 6</option>\
+\
+    <select id="imageSelector" onchange="showPreview()">\
+        <option value="White Gray It's Friday Meme/template1.png">Template 1</option>\
+        <option value="White Gray It's Friday Meme/template2.png">Template 2</option>\
+        <option value="White Gray It's Friday Meme/template3.png">Template 3</option>\
+        <option value="White Gray It's Friday Meme/template4.png">Template 4</option>\
+        <option value="White Gray It's Friday Meme/template5.png">Template 5</option>\
+        <option value="White Gray It's Friday Meme/template6.png">Template 6</option>\
     </select>\
+\
     <br>\
+\
+    <img id="previewImage" src="White Gray It's Friday Meme/template1.png" alt="Meme Template Preview">\
+\
     <input type="text" id="captionInput" placeholder="Enter your custom caption...">\
     <br>\
     <button onclick="generateMeme()">Generate Meme</button>\
     <button onclick="downloadMeme()">Download Meme</button>\
     <br>\
     <canvas id="memeCanvas" width="500" height="500"></canvas>\
+\
     <script>\
+        function showPreview() \{\
+            const imageSrc = document.getElementById('imageSelector').value;\
+            document.getElementById('previewImage').src = imageSrc;\
+        \}\
+\
         function generateMeme() \{\
             const imageSrc = document.getElementById('imageSelector').value;\
             const caption = document.getElementById('captionInput').value;\
@@ -55,6 +68,7 @@
             \};\
             img.src = imageSrc;\
         \}\
+\
         function downloadMeme() \{\
             const canvas = document.getElementById('memeCanvas');\
             const link = document.createElement('a');\
@@ -63,6 +77,7 @@
             link.click();\
         \}\
     </script>\
+\
 </body>\
 </html>\
 }
